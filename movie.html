@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CineFind — Movie Details</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/movie.css">
+
+</head>
+
+<body>
+
+    <!-- TOP NAV -->
+    <header class="nav-bar">
+        <div class="nav-inner">
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="logo">CineFind</div>
+            <a href="watchlist.html" class="nav-link">Watchlist</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- POSTER -->
+        <section class="poster-section">
+            <img id="moviePoster" src="" alt="Movie Poster" />
+        </section>
+
+        <!-- TITLE + META -->
+        <section class="movie-header">
+            <h1 id="movieTitle"></h1>
+
+            <div class="meta">
+                <span id="movieYear"></span>
+                <span id="movieGenre"></span>
+                <span id="movieRuntime"></span>
+                <span id="movieRating"></span>
+                <div id="starRating" class="stars"></div>
+            </div>
+
+            <button id="watchlistBtn" class="btn-main">Add to Watchlist</button>
+            <button id="trailerBtn" class="btn-secondary">Watch Trailer</button>
+        </section>
+
+        <!-- OVERVIEW -->
+        <section class="overview-section">
+            <h2>Overview</h2>
+            <p id="moviePlot"></p>
+        </section>
+
+        <!-- CAST -->
+        <section class="cast-section">
+            <h2>Cast</h2>
+            <div id="castList" class="cast-row">
+                <!-- JS will inject actors here -->
+            </div>
+        </section>
+
+        <!-- RECOMMENDED -->
+        <section class="recommended-section">
+            <h2>You May Also Like</h2>
+            <div id="recommendedMovies" class="movie-row">
+                <!-- JS will inject recommended movies here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <footer class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="#">Profile</a>
+    </footer>
+
+    <script type="module" src="js/movie.js"></script>
+
+</body>
+
+</html>

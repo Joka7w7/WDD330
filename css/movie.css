@@ -1,0 +1,92 @@
+/* -------- MOVIE PAGE SPECIFIC OVERRIDES -------- */
+
+/* Improve spacing between sections */
+.overview-section,
+.cast-section,
+.recommended-section {
+    margin-top: 2.2rem;
+}
+
+/* Slightly larger title for movie page */
+.movie-header h1 {
+    font-size: 2rem;
+}
+
+/* Optional: limit poster height for very tall images */
+.poster-section img {
+    max-height: 480px;
+    object-fit: cover;
+}
+
+/* --- CAST FIXED SIZE HORIZONTAL SCROLL --- */
+
+.cast-section {
+    margin-top: 2rem;
+}
+
+.cast-row {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    white-space: nowrap;
+    /* prevents vertical stacking */
+}
+
+.cast-card {
+    width: 70px;
+    flex: 0 0 auto;
+    /* prevents stretching */
+    text-align: center;
+}
+
+.cast-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--border-light);
+}
+
+.cast-card p {
+    font-size: 0.7rem;
+    margin-top: 0.3rem;
+    line-height: 1.1;
+}
+
+/* Secondary button for trailer */
+.btn-secondary {
+    background: var(--surface);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 240px;
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* --- Star Rating --- */
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 0.5rem;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: gold;
+}
+
+.star.inactive {
+    color: var(--border-light);
+}

@@ -1,0 +1,289 @@
+/* =========================================
+   GLOBAL BASE
+========================================= */
+
+body {
+    margin: 0;
+    font-family: var(--font-main, 'Inter', sans-serif);
+    background: #fafafa;
+    color: #222;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+section {
+    margin: 2.5rem 0;
+}
+
+
+/* =========================================
+   NAV BAR
+========================================= */
+.nav-bar {
+    background: #111;
+    padding: 1rem 0;
+    color: white;
+}
+
+.nav-inner {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 520px;
+    margin: 0.5rem auto 2rem auto;
+}
+
+.hero .btn-main {
+    padding: 0.9rem 2rem;
+    background: #9b1c1c;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.25s;
+    display: inline-block;
+}
+
+.hero .btn-main:hover {
+    background: #b32424;
+}
+
+
+/* =========================================
+   SEARCH BAR
+========================================= */
+.search-section {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#searchInput {
+    width: 60%;
+    max-width: 380px;
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    background: #9b1c1c;
+    border: none;
+    color: white;
+    padding: 0.8rem 1.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #b32424;
+}
+
+
+/* =========================================
+   HOMEPAGE GRID SECTIONS
+========================================= */
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* For 3-column featured movies */
+.movie-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.featured-card,
+.info-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.info-card h3 {
+    margin-top: 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.3rem;
+}
+
+/* =========================================
+   HOMEPAGE MOVIE ROWS (Popular, New, Trending)
+========================================= */
+.movie-row {
+    display: flex;
+    gap: 0.9rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.movie-row img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--border-light);
+}
+
+.movie-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.movie-row::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+.poster-mini img {
+    height: 180px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.poster-mini {
+    display: block;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+.empty-state {
+    margin: 3rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+}
+
+
+/* =========================================
+   SEARCH RESULTS GRID
+========================================= */
+.results-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+}
+
+.movie-card {
+    display: block;
+    background: white;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.25s;
+}
+
+.movie-card:hover {
+    transform: scale(1.04);
+}
+
+.movie-card .poster {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+}
+
+.movie-card .title {
+    padding: 0.7rem;
+    font-weight: 600;
+    color: #222;
+}
+
+
+/* =========================================
+   JOIN CTA
+========================================= */
+.join-section {
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+}
+
+.join-section .btn-main {
+    margin-top: 1rem;
+}
+
+
+/* =========================================
+   FOOTER NAV
+========================================= */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background: #111;
+    padding: 1rem 0;
+    margin-top: 4rem;
+}
+
+.bottom-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.bottom-nav a:hover {
+    color: white;
+}
+
+.bottom-nav a[aria-current="page"] {
+    color: #fff;
+    font-weight: 700;
+}

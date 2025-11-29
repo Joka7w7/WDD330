@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CineFind — Watchlist</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header class="nav-bar">
+        <div class="nav-inner">
+            <a href="index.html" class="back">← Home</a>
+            <div class="logo">CineFind</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="watchlist-header">
+            <h2>My Watchlist</h2>
+            <div class="filters">
+                <select id="sortSelect">
+                    <option value="recent">Recently Added</option>
+                    <option value="alpha">Alphabetical</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="watchlistGrid" class="watchlist-grid">
+            <!-- JS will render saved movies -->
+        </section>
+
+        <div id="emptyWatchlist" class="empty-state hidden">
+            <p>Your watchlist is empty. Add films to watch later.</p>
+        </div>
+    </main>
+
+    <footer class="bottom-nav">
+        <a href="index.html">Home</a>
+        <a href="watchlist.html" aria-current="page">Watchlist</a>
+        <a href="#">Profile</a>
+    </footer>
+
+    <script type="module" src="js/watchlist.js"></script>
+</body>
+
+</html>

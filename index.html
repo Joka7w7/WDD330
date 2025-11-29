@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CineFind — Discover Movies</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header class="nav-bar">
+        <div class="nav-inner">
+            <div class="logo">CineFind</div>
+
+            <nav class="top-actions">
+                <a href="watchlist.html" class="nav-link">Watchlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="homeHero" class="hero">
+            <h1>Discover Your Next Favorite Movie</h1>
+            <p>Explore new releases, trending films, and timeless classics — all in one place.</p>
+            <button id="heroSearchBtn" class="btn-main">Start Searching</button>
+        </section>
+
+        <section class="search-section">
+            <input id="searchInput" type="search" placeholder="Search movies..." />
+            <button id="searchBtn" class="btn">Search</button>
+        </section>
+
+        <section id="homeAbout" class="two-col-section">
+            <div class="text-block">
+                <h2>About Movie Discovery</h2>
+                <p>CineFind helps you explore thousands of movies across genres and decades.
+                    Save your favorites and discover what to watch next.</p>
+            </div>
+            <div class="image-block placeholder-box"></div>
+        </section>
+
+        <section id="homeHighlights" class="info-grid">
+            <div class="info-card">
+                <h3>Popular Movies</h3>
+                <p>Discover what’s trending worldwide.</p>
+                <div id="popularMovies" class="movie-row"></div>
+            </div>
+
+            <div class="info-card">
+                <h3>New Releases</h3>
+                <p>Fresh movies that just hit theaters.</p>
+                <div id="newMovies" class="movie-row"></div>
+            </div>
+        </section>
+
+        <section id="homeTrending" class="info-card">
+            <h2 class="section-title">Trending Today</h2>
+            <div id="trendingMovies" class="movie-row"></div>
+        </section>
+
+        <section id="homeFeatured" class="featured-section">
+            <h2 class="section-title">Featured Movies</h2>
+            <div id="featuredMovies" class="movie-featured-grid"></div>
+        </section>
+
+        <section id="homeInfoBlocks" class="info-grid">
+            <div class="info-card">
+                <h3>Explore Our Library</h3>
+                <p>Search across thousands of titles from every genre imaginable.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Personalized Recommendations</h3>
+                <p>Discover movies tailored to your tastes and watch habits.</p>
+            </div>
+        </section>
+
+        <section id="homeJoin" class="join-section">
+            <h2>Join Our Movie Community</h2>
+            <button class="btn-main">Get Started</button>
+        </section>
+
+        <section id="resultsSection" class="hidden">
+            <h2 class="section-title">Search Results</h2>
+
+            <div id="results" class="results-grid" aria-live="polite"></div>
+
+            <button id="backHomeBtn" class="btn back-btn hidden" style="margin-top: 2rem;">Back to Home</button>
+        </section>
+
+        <div id="emptyState" class="empty-state hidden">
+            <p>No results yet. Try searching for a movie title.</p>
+        </div>
+
+    </main>
+
+    <footer class="bottom-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="#">Profile</a>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+
+</html>
