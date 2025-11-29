@@ -10,7 +10,7 @@ CineFind is a responsive web application that allows users to search for movies,
 This project uses OMDb API and TMDb API to fetch high-quality movie data.
 
 🚀 Live Demo
-    (//Link after deployment //)
+    (https://joka7w7.github.io/WDD330/)
     👉 Coming soon
     ⭐ Features
     🔍 Movie Search
