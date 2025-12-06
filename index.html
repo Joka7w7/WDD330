@@ -2,29 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 330 Course Home Page">
+    <meta name="author" content="Jose Chanax">
     <title>CineFind — Discover Movies</title>
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/Icon.png">
 </head>
 
 <body>
     <header class="nav-bar">
         <div class="nav-inner">
             <div class="logo">CineFind</div>
+            <button class="hamburger" id="hamburgerBtn">
+                ☰
+            </button>
 
-            <nav class="top-actions">
+            <nav class="nav-links" id="mainNav">
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="watchlist.html" class="nav-link">Watchlist</a>
+                <a href="genres.html" class="nav-link">Genres</a>
             </nav>
+
         </div>
     </header>
+
 
     <main class="container">
         <section id="homeHero" class="hero">
             <h1>Discover Your Next Favorite Movie</h1>
             <p>Explore new releases, trending films, and timeless classics — all in one place.</p>
-            <button id="heroSearchBtn" class="btn-main">Start Searching</button>
         </section>
 
         <section class="search-section">
@@ -77,10 +86,21 @@
             </div>
         </section>
 
-        <section id="homeJoin" class="join-section">
-            <h2>Join Our Movie Community</h2>
-            <button class="btn-main">Get Started</button>
-        </section>
+        <main class="subscribe-container">
+
+            <section class="subscribe-hero">
+                <h1>Join the Movie Community</h1>
+                <p>Get weekly recommendations, trending titles, and movie news.</p>
+            </section>
+
+            <form id="subscribeForm" class="subscribe-form">
+                <input type="email" id="emailInput" placeholder="Enter your email" required />
+                <button type="submit" class="btn-main">Subscribe</button>
+            </form>
+
+            <p id="successMsg" class="success hidden">🎉 You are subscribed!</p>
+
+        </main>
 
         <section id="resultsSection" class="hidden">
             <h2 class="section-title">Search Results</h2>
@@ -96,14 +116,22 @@
 
     </main>
 
-    <footer class="bottom-nav">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="watchlist.html">Watchlist</a>
-        <a href="#">Profile</a>
+    <footer>
+        <div class="social">
+            <a href="https://linkedin.com/in/jose-chanax-" target="_blank"><img src="images/linkedin.svg"
+                    alt="LinkedIn"></a>
+            <a href="https://github.com/Joka7w7/WDD330" target="_blank"><img src="images/github.svg" alt="GitHub"></a>
+            <a href="https://x.com" target="_blank"><img src="images/x.svg" alt="X"></a>
+            <a href="https://facebook.com" target="_blank"><img src="images/facebook.svg" alt="Facebook"></a>
+        </div>
+        <div class="footer-info">
+            <p>&copy; <span id="year"></span> • Jose Chanax • Quetzaltenango, Guatemala • WWD330</p>
+            <p>Powered by OMDb & TMDb</p>
+        </div>
     </footer>
 
-    <script type="module" src="js/main.js"></script>
 
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

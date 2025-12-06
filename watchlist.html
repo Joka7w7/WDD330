@@ -2,18 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 330 Course Home Page">
+    <meta name="author" content="Jose Chanax">
     <title>CineFind — Watchlist</title>
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/Icon.png">
 </head>
 
 <body>
     <header class="nav-bar">
         <div class="nav-inner">
-            <a href="index.html" class="back">← Home</a>
+
             <div class="logo">CineFind</div>
+
+            <!-- Hamburger button (only visible on mobile) -->
+            <button class="hamburger" id="hamburgerBtn">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="mainNav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="watchlist.html" class="nav-link">Watchlist</a>
+                <a href="genres.html" class="nav-link">Genres</a>
+            </nav>
+
         </div>
     </header>
 
@@ -37,10 +52,9 @@
         </div>
     </main>
 
-    <footer class="bottom-nav">
-        <a href="index.html">Home</a>
-        <a href="watchlist.html" aria-current="page">Watchlist</a>
-        <a href="#">Profile</a>
+    <footer class="footer">
+        <p>© 2025 CineFind</p>
+        <p>Powered by OMDb & TMDb</p>
     </footer>
 
     <script type="module" src="js/watchlist.js"></script>

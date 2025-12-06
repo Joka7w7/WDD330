@@ -64,7 +64,7 @@ async function loadMovieDetails(imdbID) {
 
     posterEl.src = data.Poster && data.Poster !== "N/A"
         ? data.Poster
-        : "./assets/placeholder.png";
+        : "./images/placeholder.png";
 
     plotEl.textContent = data.Plot;
 }
@@ -87,19 +87,29 @@ async function loadCast(imdbID) {
     credits.cast.slice(0, 12).forEach(actor => {
         const card = createElement("div", "cast-card");
 
+        // IMAGE with fallback + error handler
         const img = createElement("img");
-        img.src = actor.profile_path
+        const imgUrl = actor.profile_path
             ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
-            : "./assets/user_placeholder.jpg";
+            : "./images/user_placeholder.jpg";
 
+        img.src = imgUrl;
+
+        img.onerror = () => {
+            img.src = "./images/user_placeholder.jpg";
+        };
+
+        // NAME with ellipsis + tooltip
         const name = createElement("p");
-        name.textContent = actor.name;
+        name.textContent = actor.name || "Unknown";
+        name.title = actor.name || "Unknown"; // shows full name on hover
 
         card.appendChild(img);
         card.appendChild(name);
         castList.appendChild(card);
     });
 }
+
 
 
 
@@ -128,7 +138,7 @@ async function loadRecommended(imdbID) {
         const img = createElement("img");
         img.src = movie.poster_path
             ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-            : "./assets/placeholder.png";
+            : "./images/placeholder.png";
 
         link.appendChild(img);
         recommendedRow.appendChild(link);
@@ -150,22 +160,33 @@ function setupWatchlistButton(imdbID) {
     });
 }
 
-function toggleWatchlist(imdbID) {
+async function toggleWatchlist(imdbID) {
     let list = JSON.parse(localStorage.getItem("watchlist") || "[]");
 
-    if (list.includes(imdbID)) {
-        list = list.filter(id => id !== imdbID);
-    } else {
-        list.push(imdbID);
+    // If exists, remove it
+    if (list.some(m => m.imdbID === imdbID)) {
+        list = list.filter(m => m.imdbID !== imdbID);
+        localStorage.setItem("watchlist", JSON.stringify(list));
+        return;
     }
+
+    // Otherwise add full movie object
+    const data = await omdbGetById(imdbID);
+
+    list.push({
+        imdbID: imdbID,
+        Title: data.Title,
+        Poster: data.Poster
+    });
 
     localStorage.setItem("watchlist", JSON.stringify(list));
 }
 
+
 function updateWatchlistButton(imdbID) {
     const list = JSON.parse(localStorage.getItem("watchlist") || "[]");
 
-    if (list.includes(imdbID)) {
+    if (list.some(m => m.imdbID === imdbID)) {
         watchlistBtn.textContent = "Remove from Watchlist";
         watchlistBtn.classList.add("active");
     } else {
@@ -218,3 +239,11 @@ function renderStars(rating) {
         container.appendChild(star);
     }
 }
+
+// HAMBURGER MENU (MOBILE)
+const hamburgerBtn = document.querySelector("#hamburgerBtn");
+const mainNav = document.querySelector("#mainNav");
+
+hamburgerBtn.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+});

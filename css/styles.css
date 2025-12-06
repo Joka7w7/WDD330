@@ -32,6 +32,8 @@ section {
     background: #111;
     padding: 1rem 0;
     color: white;
+    position: relative;
+    z-index: 2000;
 }
 
 .nav-inner {
@@ -48,6 +50,20 @@ section {
     font-weight: 700;
 }
 
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
 .nav-link {
     color: #ddd;
     text-decoration: none;
@@ -58,25 +74,90 @@ section {
     color: white;
 }
 
+@media (max-width: 600px) {
+
+    .hamburger {
+        display: block;
+        color: white;
+
+    }
+
+    .nav-links {
+        display: none;
+        /* Hide full menu */
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        gap: 1rem;
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.open {
+        display: flex;
+        /* Show when toggled */
+    }
+}
+
+
 
 /* =========================================
-   HERO SECTION
+   HERO SECTION (with dynamic banner)
 ========================================= */
 .hero {
+    position: relative;
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
+    height: 45vh;
+    /* Banner height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+
+/* Dark overlay for readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.7));
+    z-index: 1;
+}
+
+/* Keeps hero text above the overlay */
+.hero {
+    transition: background-image 0.8s ease-in-out;
+}
+
+.hero h1,
+.hero p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .hero h1 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1.15rem;
     max-width: 520px;
     margin: 0.5rem auto 2rem auto;
+    color: white;
+    /* Text white now */
 }
 
 .hero .btn-main {
@@ -88,12 +169,17 @@ section {
     font-weight: 600;
     transition: 0.25s;
     display: inline-block;
+    border: none;
+    cursor: pointer;
 }
 
 .hero .btn-main:hover {
     background: #b32424;
 }
 
+#homeHero {
+    transition: opacity 1s ease-in-out;
+}
 
 /* =========================================
    SEARCH BAR
@@ -233,8 +319,10 @@ section {
 }
 
 .movie-card:hover {
-    transform: scale(1.04);
+    transform: scale(1.03);
+    transition: transform 0.25s ease-in-out;
 }
+
 
 .movie-card .poster {
     height: 240px;
@@ -246,6 +334,20 @@ section {
     padding: 0.7rem;
     font-weight: 600;
     color: #222;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.results-grid {
+    animation: fadeIn 0.4s ease;
 }
 
 
@@ -265,25 +367,83 @@ section {
 /* =========================================
    FOOTER NAV
 ========================================= */
-.bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    background: #111;
-    padding: 1rem 0;
-    margin-top: 4rem;
-}
-
-.bottom-nav a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 0.95rem;
-}
-
-.bottom-nav a:hover {
+footer {
+    background-color: #000000;
     color: white;
+    text-align: center;
+    padding: 1rem;
 }
 
-.bottom-nav a[aria-current="page"] {
-    color: #fff;
-    font-weight: 700;
+.footer-info p {
+    margin: 0.3rem 0;
+}
+
+footer .social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+footer .social img {
+    width: 32px;
+    height: 32px;
+}
+
+/* =========================================
+   Subscribe Page
+========================================= */
+
+.subscribe-container {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.subscribe-hero {
+    margin-bottom: 2rem;
+}
+
+.subscribe-hero h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-hero p {
+    color: #aaa;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.subscribe-form input {
+    padding: 1rem;
+    width: 280px;
+    max-width: 80%;
+    border-radius: 6px;
+    border: 1px solid #555;
+}
+
+.success {
+    font-size: 1.2rem;
+    color: #40c463;
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .subscribe-form {
+        flex-direction: column;
+    }
+
+    .subscribe-form button {
+        width: 100%;
+    }
 }

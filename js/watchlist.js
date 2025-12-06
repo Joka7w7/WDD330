@@ -1,6 +1,6 @@
 import { qs, createElement } from "./utils.js";
 
-const LIST_KEY = "cinefind_watchlist";
+const LIST_KEY = "watchlist";
 const grid = qs("#watchlistGrid");
 const empty = qs("#emptyWatchlist");
 const sortSelect = qs("#sortSelect");
@@ -67,3 +67,11 @@ function removeItem(id) {
 
 sortSelect.addEventListener("change", load);
 window.addEventListener("DOMContentLoaded", load);
+
+// HAMBURGER MENU (MOBILE)
+const hamburgerBtn = document.querySelector("#hamburgerBtn");
+const mainNav = document.querySelector("#mainNav");
+
+hamburgerBtn.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+});

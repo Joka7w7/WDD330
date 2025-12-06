@@ -112,7 +112,7 @@ async function renderMovieRow(container, list) {
         const img = createElement("img", "");
         img.src = movie.poster_path
             ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-            : "./assets/placeholder.png";
+            : "./images/placeholder.png";
 
         link.appendChild(img);
         container.appendChild(link);
@@ -131,7 +131,7 @@ function renderMovieList(container, list) {
         img.style.backgroundImage =
             m.Poster && m.Poster !== "N/A"
                 ? `url(${m.Poster})`
-                : "url('./assets/placeholder.png')";
+                : "url('./images/placeholder.png')";
 
         const title = createElement("div", "title");
         title.textContent = m.Title;
@@ -183,3 +183,84 @@ if (backHomeBtn) {
         results.innerHTML = "";
     });
 }
+
+// HAMBURGER MENU (MOBILE)
+const hamburgerBtn = document.querySelector("#hamburgerBtn");
+const mainNav = document.querySelector("#mainNav");
+
+hamburgerBtn.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+});
+
+// BANNER IMAGE SETUP WITH PRELOAD + FADE
+let lastBackdrop = "";
+
+async function loadHeroBanner() {
+    const data = await tmdbGetTrending();
+    if (!data || !data.results) return;
+
+    let pool = data.results.filter(m => m.backdrop_path);
+
+    // avoid repeating current image
+    pool = pool.filter(m => m.backdrop_path !== lastBackdrop);
+
+    const random = pool[Math.floor(Math.random() * pool.length)];
+    lastBackdrop = random.backdrop_path;
+    const url = `https://image.tmdb.org/t/p/original${random.backdrop_path}`;
+
+    const hero = document.querySelector("#homeHero");
+
+    // Preload image before swapping
+    const img = new Image();
+    img.src = url;
+
+    img.onload = () => {
+        // Fade out
+        hero.style.opacity = 0;
+
+        setTimeout(() => {
+            // Swap image when faded
+            hero.style.backgroundImage = `url(${url})`;
+
+            // Fade in
+            hero.style.opacity = 1;
+        }, 300); // small delay for smoothness
+    };
+}
+
+// Initial load
+window.addEventListener("DOMContentLoaded", () => {
+    loadHeroBanner();
+});
+
+// Rotate every 7 seconds
+setInterval(loadHeroBanner, 7000);
+
+// Subscribe Form
+const form = qs("#subscribeForm");
+const emailInput = qs("#emailInput");
+const successMsg = qs("#successMsg");
+
+const SUBSCRIBE_KEY = "cinefind_subscribers";
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    let list = JSON.parse(localStorage.getItem(SUBSCRIBE_KEY) || "[]");
+
+    // prevent duplicates
+    if (!list.includes(email)) {
+        list.push(email);
+        localStorage.setItem(SUBSCRIBE_KEY, JSON.stringify(list));
+    }
+
+    emailInput.value = "";
+    successMsg.classList.remove("hidden");
+
+    setTimeout(() => {
+        successMsg.classList.add("hidden");
+    }, 3000);
+});
