@@ -25,6 +25,8 @@ const homeHighlights = qs('#homeHighlights');
 const homeFeatured = qs('#homeFeatured');
 const homeInfoBlocks = qs('#homeInfoBlocks');
 const homeJoin = qs('#homeJoin');
+const heroBanner = qs('#homeHero');
+const homeSubscribe = qs('#homeSubscribe');
 
 // HOMEPAGE MOVIE ROWS
 const popularContainer = qs('#popularMovies');
@@ -77,7 +79,11 @@ async function doSearch() {
     }
 
     renderMovieList(results, res.Search);
+
+    // ⬇️ force top
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
 
 // ========== HOMEPAGE SECTIONS ==========
 
@@ -157,21 +163,35 @@ function hideLoading() {
 // ========== SHOW/HIDE HOMEPAGE ==========
 
 function hideHomepage() {
-    homeHero.classList.add("hidden");
-    homeAbout.classList.add("hidden");
-    homeHighlights.classList.add("hidden");
-    homeFeatured.classList.add("hidden");
-    homeInfoBlocks.classList.add("hidden");
-    homeJoin.classList.add("hidden");
+    [
+        homeHero,
+        homeAbout,
+        homeHighlights,
+        homeTrending,
+        homeFeatured,
+        homeInfoBlocks,
+        homeSubscribe,
+        popularContainer,
+        trendingContainer,
+        newContainer
+    ].forEach(el => el && el.classList.add("hidden"));
 }
 
 function showHomepage() {
-    homeHero.classList.remove("hidden");
-    homeAbout.classList.remove("hidden");
-    homeHighlights.classList.remove("hidden");
-    homeFeatured.classList.remove("hidden");
-    homeInfoBlocks.classList.remove("hidden");
-    homeJoin.classList.remove("hidden");
+    [
+        homeHero,
+        homeAbout,
+        homeHighlights,
+        homeTrending,
+        homeFeatured,
+        homeInfoBlocks,
+        homeSubscribe, 
+        popularContainer,
+        trendingContainer,
+        newContainer
+    ].forEach(el => el && el.classList.remove("hidden"));
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // BACK TO HOME BUTTON
