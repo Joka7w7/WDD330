@@ -80,7 +80,6 @@ async function doSearch() {
 
     renderMovieList(results, res.Search);
 
-    // ⬇️ force top
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -185,7 +184,7 @@ function showHomepage() {
         homeTrending,
         homeFeatured,
         homeInfoBlocks,
-        homeSubscribe, 
+        homeSubscribe,
         popularContainer,
         trendingContainer,
         newContainer
@@ -221,39 +220,31 @@ async function loadHeroBanner() {
 
     let pool = data.results.filter(m => m.backdrop_path);
 
-    // avoid repeating current image
     pool = pool.filter(m => m.backdrop_path !== lastBackdrop);
 
     const random = pool[Math.floor(Math.random() * pool.length)];
+
     lastBackdrop = random.backdrop_path;
+
     const url = `https://image.tmdb.org/t/p/original${random.backdrop_path}`;
-
     const hero = document.querySelector("#homeHero");
-
-    // Preload image before swapping
     const img = new Image();
-    img.src = url;
 
+    img.src = url;
     img.onload = () => {
-        // Fade out
         hero.style.opacity = 0;
 
         setTimeout(() => {
-            // Swap image when faded
             hero.style.backgroundImage = `url(${url})`;
-
-            // Fade in
             hero.style.opacity = 1;
-        }, 300); // small delay for smoothness
+        }, 300);
     };
 }
 
-// Initial load
 window.addEventListener("DOMContentLoaded", () => {
     loadHeroBanner();
 });
 
-// Rotate every 7 seconds
 setInterval(loadHeroBanner, 7000);
 
 // Subscribe Form
@@ -271,7 +262,6 @@ form.addEventListener("submit", e => {
 
     let list = JSON.parse(localStorage.getItem(SUBSCRIBE_KEY) || "[]");
 
-    // prevent duplicates
     if (!list.includes(email)) {
         list.push(email);
         localStorage.setItem(SUBSCRIBE_KEY, JSON.stringify(list));
